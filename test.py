@@ -1,5 +1,5 @@
 import random
-
+print(random.gauss(5,1))
 balance = 500
 gameloop = True
 
@@ -21,23 +21,8 @@ class fighter:
         def name(name):
             return name
 
-        def str(atr):
-             return atr
-        
-        def spd(atr):
-             return atr
-        
-        def agi(atr):
-             return atr
-        
-        def int(atr):
-             return atr
-        
-        def size(atr):
-             return atr
-        
-        def con(atr):
-             return atr
+        str = None
+        spd = None
         
 
        
