@@ -1,7 +1,8 @@
 import random
+import ecomony as ecom
 
-balance = 500
 gameloop = True
+balance = ecom.bank_acc()
 
 #List of all names (TEMPORARY)
 fighter_name = ["Joe", "Derek", "Edwin", "Donut-Eater", "Adrian", "Bart", "Xiang", "Melvin", "John", "Jerry", "Harry", "Chester", "Tom", "Andrew", "Jackson", "Mason", "Eugene", "Oswald", "Hobart", "Mortimer", "Reginald"]
@@ -62,26 +63,21 @@ class Fighter:
 def main_menu():
     print(balance)
 
-
-
 #BIG ISSUES HERE
 def fighter_select(fighter1, fighter2):
      sel_fighter = input("Please select your fighter(1 or 2)")
      if sel_fighter == "1":
          print()
-         confirm = input("you have selected "+fighter1.name+"?  (Y [Yes] N [No])")
-# IGNORED IF STATMENTS
-         if confirm == "n" or "N":
-               print("test")
-               fighter_select(fighter1, fighter2)
-         elif confirm == "y" or "Y":
-               print("WIP")
-               print(confirm)
-               return fighter1
-         
-
-               
+         return fighter1
+     if sel_fighter == "2":
+         print()
+         return fighter2
      
+def bet_select():
+      print("Please enter your bet")
+      print("You have "+ str(balance)+ " Gold")
+      bet = input("Bet: ")
+              
 
 def fighter_menu():
     print()
@@ -91,8 +87,9 @@ def fighter_menu():
     print("2. "+fighter2.name)
     print()
     chosen = fighter_select(fighter1, fighter2)
-    print(chosen.name)
+    print("You have selected "+ chosen.name)
     print(chosen.stat_check())
+    bet_select()
 
           
      
