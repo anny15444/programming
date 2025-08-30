@@ -63,16 +63,23 @@ class Fighter:
 def main_menu():
     print(player.balance)
 
-#BIG ISSUES HERE
 def fighter_select(fighter1, fighter2):
-     sel_fighter = input("Please select your fighter(1 or 2)")
-     if sel_fighter == "1":
-         print()
-         return fighter1
-     if sel_fighter == "2":
-         print()
-         return fighter2
-     
+     while True:
+          sel_fighter = input("Please select your fighter(1 or 2)")
+          if sel_fighter == "1":
+               print()
+               return fighter1
+          if sel_fighter == "2":
+               print()
+               return fighter2
+          if sel_fighter != "1" or "2":
+               print()
+               print("Please select vaild fighter!")
+               print()
+               print("1. "+fighter1.name)
+               print("2. "+fighter2.name)
+
+
 def bet_select():
       print("Please enter your bet")
       print("You have "+ str(player.balance)+ " Gold")
@@ -85,17 +92,16 @@ def fighter_menu():
     fighter2 = Fighter()
     print("1. "+fighter1.name)
     print("2. "+fighter2.name)
-    print()
-    chosen = fighter_select(fighter1, fighter2)
+    chosen = fighter_select(fighter1,fighter2)
+
     print("You have selected "+ chosen.name)
-    print(chosen.stat_check())
     bet_select()
 
           
      
               
 def start():
-    balance.update(500)
+    player.update(500)
     print()
     print("Welcome to Gambling Sim!")
     print("In this game you will gamble on gladitors to earn money.")
