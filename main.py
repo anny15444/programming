@@ -51,12 +51,27 @@ class Fighter:
                     name_count += 1
                else:
                     self.name = self.name + " and The Energetic"
+
           if self.size > max_atr/1.25:
                if name_count == 0:
                     self.name = self.name + " The Imposing"
                     name_count += 1
                else:
                     self.name = self.name + " and The Imposing"
+
+          if self.con > max_atr/1.25:
+               if name_count == 0:
+                    self.name = self.name + " The Tough"
+                    name_count += 1
+               else:
+                    self.name = self.name + " and The Tough"
+                    
+          if self.agi > max_atr/1.25:
+               if name_count == 0:
+                    self.name = self.name + " The Dexterous"
+                    name_count += 1
+               else:
+                    self.name = self.name + " and The Dexterous"
           
           #Prints all atributes. Used for debugging
      def stat_check(self):
