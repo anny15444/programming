@@ -65,6 +65,8 @@ def main_menu():
 
 def fighter_select(fighter1, fighter2):
      while True:
+          print("1. "+fighter1.name)
+          print("2. "+fighter2.name)
           sel_fighter = input("Please select your fighter(1 or 2)")
           if sel_fighter == "1":
                print()
@@ -76,26 +78,18 @@ def fighter_select(fighter1, fighter2):
                print()
                print("Please select vaild fighter!")
                print()
-               print("1. "+fighter1.name)
-               print("2. "+fighter2.name)
 
-
-def bet_select():
-      print("Please enter your bet")
-      print("You have "+ str(player.balance)+ " Gold")
-      bet = input("Bet: ")
               
 
 def fighter_menu():
     print()
     fighter1 = Fighter()
     fighter2 = Fighter()
-    print("1. "+fighter1.name)
-    print("2. "+fighter2.name)
     chosen = fighter_select(fighter1,fighter2)
 
     print("You have selected "+ chosen.name)
-    bet_select()
+    bet = ecom.bet_select(player)
+    print("You have bet "+ str(bet)+" gold on "+ chosen.name)
 
           
      
