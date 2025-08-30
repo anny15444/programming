@@ -3,9 +3,10 @@ import ecomony as ecom
 
 gameloop = True
 player = ecom.bank_acc()
+max_atr = 10
 
-#List of all names (TEMPORARY)
-fighter_name = ["Joe", "Derek", "Edwin", "Donut-Eater", "Adrian", "Bart", "Xiang", "Melvin", "John", "Jerry", "Harry", "Chester", "Tom", "Andrew", "Jackson", "Mason", "Eugene", "Oswald", "Hobart", "Mortimer", "Reginald"]
+with open('names.txt', "r") as file:
+     fighter_name = file.read().split()
 
 #Chooses a random name from the list of names
 def get_name():
@@ -14,7 +15,7 @@ def get_name():
 
 #Generates a random number from 0 to 10 for all atributes
 def gen_atr():
-      atr = random.randint(0,10)
+      atr = random.randrange(0,max_atr,1)
       return atr
 
 #This class contains every stat of the fighters
@@ -28,22 +29,23 @@ class Fighter:
           self.con = gen_atr()
           self.int = gen_atr()
           self.size = gen_atr()
+          self.pop = random.randrange(1,max_atr*10,1)
 
-          if self.int > 8:
+          if self.int > max_atr/1.25:
                if name_count == 0:
                     self.name = self.name + " The Wise"
                     name_count += 1
                else:
                     self.name = self.name + " and The Wise"
 
-          if self.str > 8:
+          if self.str > max_atr/1.25:
                if name_count == 0:
                     self.name = self.name + " The Strong"
                     name_count += 1
                else:
                     self.name = self.name + " and The Strong"
 
-          if self.spd > 8:
+          if self.spd > max_atr/1.25:
                if name_count == 0:
                     self.name = self.name + " The Energetic"
                     name_count += 1
@@ -58,7 +60,8 @@ class Fighter:
           print("Agilty = "+str(self.agi))
           print("Toughness = "+str(self.con))
           print("Intelligence = "+str(self.int))
-          print("Size = "+str(self.size))    
+          print("Size = "+str(self.size))   
+          print("Popularity = "+str(self.pop)) 
 
 def main_menu():
     print(player.balance)
@@ -88,6 +91,7 @@ def fighter_menu():
     chosen = fighter_select(fighter1,fighter2)
 
     print("You have selected "+ chosen.name)
+    print(chosen.stat_check())
     bet = ecom.bet_select(player)
     print("You have bet "+ str(bet)+" gold on "+ chosen.name)
 
