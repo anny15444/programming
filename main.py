@@ -112,14 +112,9 @@ def fighter_menu():
     print()
     fighter1 = Fighter()
     fighter2 = Fighter()
-    test = sum(fighter1.atr_list)/len(fighter1.atr_list)
-    test2 = sum(fighter2.atr_list)/len(fighter2.atr_list)
-    print(str(test))
-    print(str(test2))
     chosen = fighter_select(fighter1,fighter2)
 
     print("You have selected "+ chosen.name)
-    print(chosen.stat_check())
     bet = ecom.bet_select(player)
     print("You have bet "+ str(bet)+" gold on "+ chosen.name)
     player.update(player.balance - bet)
@@ -172,6 +167,5 @@ def start():
 
 
 while gameloop == True:
-    
     start()
     gameloop = False
