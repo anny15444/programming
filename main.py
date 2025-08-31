@@ -1,4 +1,5 @@
 import random
+import math
 import ecomony as ecom
 
 gameloop = True
@@ -30,43 +31,45 @@ class Fighter:
           self.int = gen_atr()
           self.size = gen_atr()
           self.pop = random.randrange(1,max_atr*10,1)
+          self.atr_list = [self.str, self.spd, self.agi, self.con, self.int, self.size]
+          self.avg = sum(self.atr_list)/len(self.atr_list)
 
-          if self.int > max_atr/1.25:
+          if self.int > max_atr * 0.8:
                if name_count == 0:
                     self.name = self.name + " The Wise"
                     name_count += 1
                else:
                     self.name = self.name + " and The Wise"
 
-          if self.str > max_atr/1.25:
+          if self.str > max_atr * 0.8:
                if name_count == 0:
                     self.name = self.name + " The Strong"
                     name_count += 1
                else:
                     self.name = self.name + " and The Strong"
 
-          if self.spd > max_atr/1.25:
+          if self.spd > max_atr * 0.8:
                if name_count == 0:
                     self.name = self.name + " The Energetic"
                     name_count += 1
                else:
                     self.name = self.name + " and The Energetic"
 
-          if self.size > max_atr/1.25:
+          if self.size > max_atr * 0.8:
                if name_count == 0:
                     self.name = self.name + " The Imposing"
                     name_count += 1
                else:
                     self.name = self.name + " and The Imposing"
 
-          if self.con > max_atr/1.25:
+          if self.con > max_atr * 0.8:
                if name_count == 0:
                     self.name = self.name + " The Tough"
                     name_count += 1
                else:
                     self.name = self.name + " and The Tough"
-                    
-          if self.agi > max_atr/1.25:
+
+          if self.agi > max_atr * 0.8:
                if name_count == 0:
                     self.name = self.name + " The Dexterous"
                     name_count += 1
@@ -112,9 +115,42 @@ def fighter_menu():
     chosen = fighter_select(fighter1,fighter2)
 
     print("You have selected "+ chosen.name)
-    print(chosen.stat_check())
     bet = ecom.bet_select(player)
     print("You have bet "+ str(bet)+" gold on "+ chosen.name)
+    player.update(player.balance - bet)
+    if fighter1.avg > fighter2.avg:
+         if fighter1 is chosen:
+              player.update(player.balance + bet*2)
+              print(fighter1.name+" Won the Battle")
+              print("You won "+ str(bet*2))
+              input("Press enter to contiune")     
+              fighter_menu()
+         else:
+              print(fighter2.name+" Won")
+              print("You lost "+ str(bet))
+              input("Press enter to contiune")
+              fighter_menu()     
+
+    if fighter2.avg > fighter1.avg:
+         if fighter2 is chosen:
+              player.update(player.balance + bet*2)
+              print(fighter2.name+" Won the Battle")
+              print("You won "+ str(bet*2))
+              input("Press enter to contiune")     
+              fighter_menu()
+         else:
+              print(fighter1.name+" Won")
+              print("You lost "+ str(bet))   
+              input("Press enter to contiune") 
+              fighter_menu()      
+
+    else:
+         print("Fighters are equal and kill eachother at the same\ntime in battle")
+         print("Game tied, you lost nothing")     
+         input("Press enter to contiune")
+         player.update(player.balance+bet)
+         fighter_menu()       
+
 
           
      
