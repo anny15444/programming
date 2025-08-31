@@ -158,7 +158,7 @@ def fighter_menu():
 def start():
     player.update(500)
     print()
-    print("Welcome to Gambling Sim!")
+    print("Welcome to Fate of Auspice!")
     print("In this game you will gamble on gladitors to earn money.")
     print("In order to begin you must chose one fighter and place a bet.")
     input("Press enter to continue")
