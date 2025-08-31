@@ -153,6 +153,7 @@ def fighter_menu():
          print("Fighters are equal and kill eachother at the same\ntime in battle")
          print("Game tied, you lost nothing")     
          input("Press enter to contiune")
+         player.update(player.balance+bet)
          fighter_menu()       
 
 
